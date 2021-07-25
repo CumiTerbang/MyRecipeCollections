@@ -1,7 +1,8 @@
 # My Recipe Collections
 
 A new Flutter project.
-in this project I try to creating mobile apps to explore various food recipe from (food2fork API)[https://forkify-api.herokuapp.com/].
+
+In this project I try to creating mobile apps to explore various food recipe from [food2fork API](https://forkify-api.herokuapp.com/).
 
 ## Getting Started
 
