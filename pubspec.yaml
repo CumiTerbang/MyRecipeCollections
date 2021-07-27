@@ -29,6 +29,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  double_back_to_close_app: ^2.0.1
+  flutter_native_splash: ^1.2.0
+  flutter_launcher_icons: ^0.9.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -43,6 +47,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -74,3 +80,18 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "assets/my_logo.png"
+  android: true
+  ios: true
+# every time you change the flutter_native_splash setup you should run this command in your terminal:
+# flutter pub run flutter_native_splash:create
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/my_icon.png"
+# every time you change the flutter_icons setup you should run this command in your terminal:
+# flutter pub run flutter_launcher_icons:main
