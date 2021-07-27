@@ -2,17 +2,17 @@ import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:my_recipe_collections/about_page.dart';
-import 'package:my_recipe_collections/home_page.dart';
+import 'package:my_recipe_collections/homepage/home_page.dart';
 
 class TitleScreenPage extends StatelessWidget {
   Container imageBox(String imgsrc) {
     return Container(
         width: 200.0,
         height: 200.0,
-        decoration: new BoxDecoration(
+        decoration: BoxDecoration(
             shape: BoxShape.rectangle,
-            image: new DecorationImage(
-                fit: BoxFit.fill, image: new AssetImage(imgsrc))));
+            image: DecorationImage(
+                fit: BoxFit.fill, image: AssetImage(imgsrc))));
   }
 
   ConstrainedBox buildButtonNextPage(
