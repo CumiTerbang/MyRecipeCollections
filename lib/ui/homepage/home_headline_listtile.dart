@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:my_recipe_collections/homepage/recipe_data.dart';
+import 'package:my_recipe_collections/data/recipe_data.dart';
 
-class home_listtile extends StatelessWidget {
+class home_headline_listtile extends StatelessWidget {
   final RecipeData item;
+  final VoidCallback onOpenDetailPage;
 
-  home_listtile(this.item);
+  home_headline_listtile(this.item, this.onOpenDetailPage);
 
   Widget _verticalTile(BuildContext context, RecipeData item) {
     return InkWell(
-      onTap: () {
-        SnackBar snackBar = SnackBar(
-          content: Text(item.title + " clicked"),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      },
+      onTap: onOpenDetailPage,
       child: Container(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        margin: EdgeInsets.all(10.0),
+        padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+        // margin: EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,7 +40,7 @@ class home_listtile extends StatelessWidget {
 
   Widget _title(String text, TextStyle style) {
     return Container(
-      padding: EdgeInsets.fromLTRB(0, 5.0, 0, 5.0),
+      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
       child: Text(
         text,
         style: style,

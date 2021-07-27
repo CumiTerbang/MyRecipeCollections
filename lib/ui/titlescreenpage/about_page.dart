@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_recipe_collections/MyCustomWidgets.dart';
+import 'package:my_recipe_collections/utils/MyCustomWidgets.dart';
 
 class AboutPage extends StatelessWidget {
   @override

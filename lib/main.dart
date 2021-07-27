@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_recipe_collections/titlescreen_page.dart';
+import 'package:my_recipe_collections/ui/titlescreenpage/titlescreen_page.dart';
 
 void main() {
   runApp(MyApp());

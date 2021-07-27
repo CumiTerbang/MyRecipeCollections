@@ -1,7 +1,11 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
-import 'package:my_recipe_collections/homepage/home_listtile.dart';
-import 'package:my_recipe_collections/homepage/recipe_data.dart';
+import 'package:my_recipe_collections/ui/detailpage/detail_page.dart';
+import 'package:my_recipe_collections/ui/titlescreenpage/about_page.dart';
+import 'package:my_recipe_collections/ui/homepage/home_headline_listtile.dart';
+import 'package:my_recipe_collections/data/recipe_data.dart';
+
+import 'home_item_listtile.dart';
 
 class HomePage extends StatelessWidget {
   ConstrainedBox buildButtonComingSoon(
@@ -30,34 +34,30 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildBodyContent(BuildContext context) {
-
-    List<RecipeData> items = List<RecipeData>
-        .generate(20, (i) =>
-        RecipeData("title ${i}", "subtitle ${i}", "assets/background.jpg"));
+    List<RecipeData> items = List<RecipeData>.generate(
+        20,
+        (i) =>
+            RecipeData("title ${i}", "subtitle ${i}", "assets/background.jpg"));
 
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
         if (index == 0) {
-          return home_listtile(items[index]);
-        }else{
-          return _listTile(context, items[index]);
+          return home_headline_listtile(items[index], () {
+            openDetailPage(context, items[index]);
+          });
+        } else {
+          return home_item_listtile(items[index], () {
+            openDetailPage(context, items[index]);
+          });
         }
       },
     );
   }
 
-  Widget _listTile(BuildContext context, RecipeData item) {
-    return ListTile(
-        leading: imageBox("assets/background.jpg"),
-        title: Text(item.title),
-        subtitle: Text(item.subtitle),
-        onTap: () {
-          SnackBar snackBar = SnackBar(
-            content: Text(item.title + " clicked"),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        });
+  void openDetailPage(BuildContext context, RecipeData item) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => DetailPage(item: item)));
   }
 
   @override

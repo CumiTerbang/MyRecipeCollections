@@ -1,8 +1,8 @@
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:my_recipe_collections/about_page.dart';
-import 'package:my_recipe_collections/homepage/home_page.dart';
+import 'package:my_recipe_collections/ui/titlescreenpage/about_page.dart';
+import 'package:my_recipe_collections/ui/homepage/home_page.dart';
 
 class TitleScreenPage extends StatelessWidget {
   Container imageBox(String imgsrc) {
