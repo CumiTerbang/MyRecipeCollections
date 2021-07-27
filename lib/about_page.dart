@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_recipe_collections/MyCustomWidgets.dart';
 
 class AboutPage extends StatelessWidget {
   @override
@@ -18,8 +19,7 @@ class AboutPage extends StatelessWidget {
               Divider(height: 20),
               Text(
                   "Welcome to my simple flutter project.\nIn this project I try to create simple mobile apps for practice flutter to browse various food recipe using Food2Fork API",
-                  style:
-                      TextStyle(fontSize: 14.0)),
+                  style: TextStyle(fontSize: 14.0)),
             ],
           )),
     );
