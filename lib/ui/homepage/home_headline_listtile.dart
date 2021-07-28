@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:my_recipe_collections/data/recipe_data.dart';
 
 class home_headline_listtile extends StatelessWidget {
-  final RecipeData item;
+  final RecipeData_recipes item;
   final VoidCallback onOpenDetailPage;
 
   home_headline_listtile(this.item, this.onOpenDetailPage);
 
-  Widget _verticalTile(BuildContext context, RecipeData item) {
+  Widget _verticalTile(BuildContext context, RecipeData_recipes item) {
     return InkWell(
       onTap: onOpenDetailPage,
       child: Container(
@@ -18,29 +18,40 @@ class home_headline_listtile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             _thumbnail(item),
-            _title(item.title,
+            _titleTextBox(item.title,
                 TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold)),
-            _title(item.subtitle, TextStyle(fontSize: 14.0))
+            _subtitleTextBox(item.publisher, TextStyle(fontSize: 14.0))
           ],
         ),
       ),
     );
   }
 
-  Widget _thumbnail(RecipeData item) {
+  Widget _thumbnail(RecipeData_recipes item) {
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Container(
-          child: Image.asset(
-        item.imageurl,
+          child: FadeInImage.assetNetwork(
+        placeholder: "assets/my_logo.png",
+        image: item.image_url,
         fit: BoxFit.cover,
       )),
     );
   }
 
-  Widget _title(String text, TextStyle style) {
+  Widget _titleTextBox(String text, TextStyle style) {
     return Container(
-      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+      padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 0.0),
+      child: Text(
+        text,
+        style: style,
+      ),
+    );
+  }
+
+  Widget _subtitleTextBox(String text, TextStyle style) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 10.0),
       child: Text(
         text,
         style: style,
