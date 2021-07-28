@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:my_recipe_collections/data/api_services.dart';
 import 'package:my_recipe_collections/data/recipedetail_data.dart';
+import 'package:my_recipe_collections/ui/detailpage/loadingdetail_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatefulWidget {
   DetailPage({Key? key, required this.recipe_id, required this.title})
@@ -38,7 +40,6 @@ class _DetailPage extends State<DetailPage> {
         future: futureRecipeDetailData,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            // return Text(snapshot.data!.title);
             return SingleChildScrollView(
                 child: buildBodyContent(context, snapshot.data!));
           } else if (snapshot.hasError) {
@@ -46,7 +47,8 @@ class _DetailPage extends State<DetailPage> {
           }
 
           // By default, show a loading spinner.
-          return Center(child: const CircularProgressIndicator());
+          // return Center(child: const CircularProgressIndicator());
+          return LoadingShimmerDetailPage();
         });
   }
 
@@ -62,9 +64,34 @@ class _DetailPage extends State<DetailPage> {
             TextStyle(fontSize: 16.0),
           ),
           parseIngredient(item.recipe.ingredients, TextStyle(fontSize: 16.0)),
+          buttonOpenBrowser(item.recipe)
         ]),
       ),
     );
+  }
+
+  Widget buttonOpenBrowser(RecipeDetailData_recipe item) {
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints.tightFor(width: 200),
+        child: ElevatedButton(
+            child: Text("Visit The Web Page"),
+            onPressed: () {
+              _launchURL(item.source_url);
+            }),
+      ),
+    );
+  }
+
+  void _launchURL(_url) async {
+    if (await canLaunch(_url)) {
+      await launch(_url);
+    } else {
+      SnackBar snackBar = SnackBar(
+        content: Text('Could not launch $_url'),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
   }
 
   Widget parseIngredient(List<String> ingredients, TextStyle style) {

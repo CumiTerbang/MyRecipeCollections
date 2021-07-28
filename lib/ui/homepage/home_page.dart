@@ -4,6 +4,7 @@ import 'package:my_recipe_collections/data/api_services.dart';
 import 'package:my_recipe_collections/ui/detailpage/detail_page.dart';
 import 'package:my_recipe_collections/ui/homepage/home_headline_listtile.dart';
 import 'package:my_recipe_collections/data/recipe_data.dart';
+import 'package:my_recipe_collections/ui/homepage/loadinghome_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -39,14 +40,15 @@ class _HomePage extends State<HomePage> {
         future: futureRecipeData,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            // return Text(snapshot.data!.title);
             return buildBodyContent(context, snapshot.data!);
+            // return LoadingShimmerHomePage();
           } else if (snapshot.hasError) {
             return Center(child: Text('${snapshot.error}'));
           }
 
           // By default, show a loading spinner.
-          return Center(child: const CircularProgressIndicator());
+          // return Center(child: const CircularProgressIndicator());
+          return LoadingShimmerHomePage();
         });
   }
 
