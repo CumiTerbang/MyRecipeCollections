@@ -31,7 +31,7 @@ class _DetailPage extends State<DetailPage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: getFutureBuilder(),
+      body: getFutureBuilder(), //because in this page the api just called once, we use FutureBuilder
     );
   }
 
@@ -64,7 +64,8 @@ class _DetailPage extends State<DetailPage> {
             TextStyle(fontSize: 16.0),
           ),
           parseIngredient(item.recipe.ingredients, TextStyle(fontSize: 16.0)),
-          buttonOpenBrowser(item.recipe)
+          buttonOpenBrowser(item.recipe),
+          Divider(height: 20.0,)
         ]),
       ),
     );
