@@ -47,11 +47,12 @@ class _HomePage extends State<HomePage> {
             if (this.actionIcon.icon == Icons.search) {
               this.actionIcon = new Icon(Icons.close);
               this.appBarTitle = new TextField(
+                autofocus: true,
                 style: new TextStyle(
                   color: Colors.white,
                 ),
                 decoration: new InputDecoration(
-                    prefixIcon: new Icon(Icons.search, color: Colors.white),
+                    // prefixIcon: new Icon(Icons.close, color: Colors.white),
                     hintText: "Search..."),
                 onSubmitted: (value) {
                   _query = value;
